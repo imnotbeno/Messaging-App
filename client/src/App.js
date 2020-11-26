@@ -1,7 +1,9 @@
+import Bottom from "./components/Bottom";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello!</h1>
+      <Bottom />
     </div>
   );
 }
