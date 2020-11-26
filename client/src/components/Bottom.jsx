@@ -1,13 +1,21 @@
 import React from "react";
-import { Button, TextField} from "@material-ui/core";
+import { Button, TextField, Box } from "@material-ui/core";
 
 function Bottom() {
   return (
     <footer>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <Button variant="contained" color="primary">
-        Save
-      </Button>
+      <Box display="flex">
+        <TextField
+          className="input-field"
+          id="outlined-input"
+          label="Input message"
+          variant="outlined"
+          fullWidth={true}
+        />
+        <Button className="send-button" variant="contained" color="primary">
+          Send
+        </Button>
+      </Box>
     </footer>
   );
 }
