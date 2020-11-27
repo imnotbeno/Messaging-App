@@ -1,6 +1,7 @@
 import Bottom from "./components/Bottom";
 import MsgWindow from "./components/MessageWindow";
 import NavBar from "./components/NavBar";
+import TitleBar from "./components/TitleBar";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -13,6 +14,7 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
+      <TitleBar />
       <NavBar />
       <MsgWindow />
       <Bottom />

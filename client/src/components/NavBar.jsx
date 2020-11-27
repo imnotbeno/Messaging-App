@@ -9,13 +9,11 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Avatar from "@material-ui/core/Avatar";
 
 var drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -26,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
   drawerContainer: {
     overflow: "auto",
   },
+  names: {
+    marginLeft: 10,
+    padding: 5,
+  },
+  navBarTitle: {
+    padding: 10,
+  },
 }));
 
 function NavBar() {
@@ -34,13 +39,6 @@ function NavBar() {
   return (
     <div className="nav-bar">
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Slax
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -49,6 +47,15 @@ function NavBar() {
         }}
       >
         <Toolbar />
+        <Typography
+          className={classes.navBarTitle}
+          variant="h6"
+          align="center"
+          noWrap
+        >
+          Channels
+        </Typography>
+        <Divider />
         <div className={classes.drawerContainer}>
           <List>
             {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
@@ -57,13 +64,24 @@ function NavBar() {
               </ListItem>
             ))}
           </List>
+          <Typography
+            className={classes.navBarTitle}
+            variant="h6"
+            align="center"
+            noWrap
+          >
+            Users
+          </Typography>
           <Divider />
           <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            {["Niko Bec", "Michael Schuhmacher", "Emily Blunt"].map(
+              (text, index) => (
+                <ListItem button key={text}>
+                  <Avatar>{text}</Avatar>
+                  <ListItemText className={classes.names}>{text}</ListItemText>
+                </ListItem>
+              )
+            )}
           </List>
         </div>
       </Drawer>
