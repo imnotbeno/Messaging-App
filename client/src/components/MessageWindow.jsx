@@ -1,7 +1,8 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   messages: {
@@ -16,6 +17,7 @@ function MsgWindow() {
   return (
     <div className="msg-window">
       <main className={classes.messages}>
+        <CssBaseline />
         <Toolbar />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
