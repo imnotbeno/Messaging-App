@@ -26,10 +26,6 @@ const useStyles = makeStyles((theme) => ({
   drawerContainer: {
     overflow: "auto",
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
 }));
 
 function NavBar() {
@@ -41,7 +37,7 @@ function NavBar() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            Clipped drawer
+            Slax
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,10 +1,15 @@
 import React from "react";
-//import { Button, TextField, Box } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 function Bottom() {
   return (
     <footer>
-
+      <TextField
+        id="outlined-basic"
+        label="Input Message"
+        variant="outlined"
+        fullWidth={true}
+      />
     </footer>
   );
 }
