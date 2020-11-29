@@ -24,7 +24,7 @@ function Bottom(props) {
   const [inputText, setInput] = useState("");
 
   function inputHandler(event) {
-    var { value, name } = event.target;
+    var value = event.target.value;
     setInput(value);
   }
 
