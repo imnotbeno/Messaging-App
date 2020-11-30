@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,12 +14,20 @@ const useStyles = makeStyles((theme) => ({
 function MsgWindow(props) {
   const classes = useStyles();
 
+  var messageList = props.message;
+
   return (
     <div>
       <main className={classes.messages}>
         <CssBaseline />
         <Toolbar />
-        <Message text={props.message}/>
+        {messageList.map((message, index) => (
+          <Message 
+          key={index}
+          id={index}
+          text={message} 
+          />
+        ))}
       </main>
     </div>
   );

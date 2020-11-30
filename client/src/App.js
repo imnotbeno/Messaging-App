@@ -13,10 +13,12 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState([]);
 
   function messageHandler(inputText){
-    setMessage(inputText);
+    setMessage((prevMessage)=>{
+      return [...prevMessage, inputText]
+    });
   }
 
   const classes = useStyles();
