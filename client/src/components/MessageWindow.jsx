@@ -21,13 +21,13 @@ function MsgWindow(props) {
       <main className={classes.messages}>
         <CssBaseline />
         <Toolbar />
-        {messageList.map((message, index) => (
+        {/* {messageList.map((message, index) => (
           <Message 
           key={index}
           id={index}
           text={message} 
           />
-        ))}
+        ))} */}
       </main>
     </div>
   );

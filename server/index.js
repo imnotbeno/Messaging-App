@@ -11,9 +11,7 @@ mongoose.connect("mongodb://localhost:27017/messagesDB", {
   useUnifiedTopology: true,
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
+app.use(express.static(path.join(__dirname,"..","client")));
 
 io.on("connection", (socket) => {
   //Get the last 10 messages from database
