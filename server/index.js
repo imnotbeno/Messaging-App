@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
-const io = require("socket.io")(http);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 const path = require("path");
 const mongoose = require("mongoose");
 const Message = require("./message");
@@ -11,9 +16,10 @@ mongoose.connect("mongodb://localhost:27017/messagesDB", {
   useUnifiedTopology: true,
 });
 
-app.use(express.static(path.join(__dirname,"..","client")));
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
 io.on("connection", (socket) => {
+  console.log("a user has connected!");
   //Get the last 10 messages from database
   Message.find()
     .sort({ createdAt: -1 })
@@ -44,10 +50,9 @@ io.on("connection", (socket) => {
     });
     //Notify all users about new message
     socket.broadcast.emit("push", msg);
-    
   });
 });
 
-http.listen(3000, () => {
+http.listen(5000, () => {
   console.log("Server running on port 3000");
 });

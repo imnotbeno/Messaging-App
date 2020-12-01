@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import Message from "./Message";
+//import Message from "./Message";
 
 const useStyles = makeStyles((theme) => ({
   messages: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 function MsgWindow(props) {
   const classes = useStyles();
 
-  var messageList = props.message;
+//  var messageList = props.message;
 
   return (
     <div>
