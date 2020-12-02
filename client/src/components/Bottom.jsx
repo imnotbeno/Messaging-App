@@ -48,7 +48,7 @@ function Bottom(props) {
         variant="outlined"
         fullWidth={true}
         onChange={inputHandler}
-        value={inputText}
+        value={inputText.content}
       />
       <Button
         variant="contained"

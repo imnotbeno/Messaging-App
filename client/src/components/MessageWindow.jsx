@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-//import Message from "./Message";
+import Message from "./Message";
 
 const useStyles = makeStyles((theme) => ({
   messages: {
@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
 function MsgWindow(props) {
   const classes = useStyles();
 
-//  var messageList = props.message;
+  //var messageList = props.message;
+
+  console.log(props.message);
 
   return (
     <div>
@@ -22,11 +24,7 @@ function MsgWindow(props) {
         <CssBaseline />
         <Toolbar />
         {/* {messageList.map((message, index) => (
-          <Message 
-          key={index}
-          id={index}
-          text={message} 
-          />
+          <Message key={index} id={index} text={message} />
         ))} */}
       </main>
     </div>

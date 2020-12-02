@@ -17,19 +17,26 @@ const useStyles = makeStyles((theme) => ({
 function App(props) {
   const [message, setMessage] = useState({
     chat: [],
+    user: "",
     content: "",
-    name: "",
   });
 
-  useEffect(() => {
-    socket.on("connect", () => {
-      console.log("socket id:" + socket.id);
-    });
-  }, []);
+  //ComponentDidMount equivalent
+  // useEffect(() => {
+  //   // socket.on("init", (msg) => {
+  //   //   //Get last 10 messages from DB
+  //   //   console.log(msg);
+  //   // });
+  // }, []);
 
+  //New message from bottom
   function messageHandler(inputText) {
-    setMessage((prevMessage) => {
-      return [...prevMessage, inputText];
+    setMessage(() => {
+      return {
+        chat: [],
+        user: inputText.username,
+        content: inputText.message,
+      };
     });
   }
 
