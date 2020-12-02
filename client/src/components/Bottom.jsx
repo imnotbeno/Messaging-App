@@ -21,7 +21,7 @@ function Bottom(props) {
 
   //Handlers
   const [inputText, setInput] = useState({
-    username: "",
+    username: "Niko",
     message: "",
   });
 
