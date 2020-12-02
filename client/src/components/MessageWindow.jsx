@@ -23,23 +23,28 @@ function MsgWindow(props) {
 
   // const [chat, setChat] = useState({
   //   chat: [],
-  //   user: "",
-  //   content: "",
+  //   // user: "",
+  //   // content: "",
   // });
 
+  //ComponentDidMount equivalent
+  // useEffect(() => {
+  //   socket.on("init", (msg) => {
+  //     //Get last 10 messages from DB
+  //     //reverse to get the latest timestamp
+  //     console.log(msg.reverse());
+  //   });
+  // }, []);
+
   //Send a new message to the server
-  socket.emit("newMessage", {
-    user: messageList.user,
-    content: messageList.content,
-  });
+  // socket.emit("newMessage", {
+  //   user: messageList.user,
+  //   content: messageList.content,
+  // });
 
   // setChat((prev) => {
-  //   return{
-  //     chat: [...prev.chat, {
-  //       user: messageList.user,
-  //       content: messageList.user,
-  //     }],
-  //     content:"",
+  //   return {
+  //     chat: [...prev.chat, messageList],
   //   };
   // });
 
