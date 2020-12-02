@@ -4,9 +4,9 @@ import MsgWindow from "./components/MessageWindow";
 import Bottom from "./components/Bottom";
 import { makeStyles } from "@material-ui/core";
 import { React, useState, useEffect } from "react";
-//import io from "socket.io-client";
+import io from "socket.io-client";
 
-//const socket = io("http://localhost:5000");
+const socket = io("http://localhost:5000");
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,12 +22,12 @@ function App(props) {
   });
 
   //ComponentDidMount equivalent
-  // useEffect(() => {
-  //   // socket.on("init", (msg) => {
-  //   //   //Get last 10 messages from DB
-  //   //   console.log(msg);
-  //   // });
-  // }, []);
+  useEffect(() => {
+    socket.on("init", (msg) => {
+      //Get last 10 messages from DB
+      console.log(msg.reverse());
+    });
+  }, []);
 
   //New message from bottom
   function messageHandler(inputText) {
