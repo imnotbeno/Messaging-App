@@ -16,7 +16,7 @@ mongoose.connect("mongodb://localhost:27017/messagesDB", {
   useUnifiedTopology: true,
 });
 
-app.use(express.static(path.join(__dirname, "..", "client", "build")));
+app.use(express.static(path.join(__dirname, "..", "client")));
 
 io.on("connection", (socket) => {
   console.log("a user has connected!");
@@ -54,5 +54,5 @@ io.on("connection", (socket) => {
 });
 
 http.listen(5000, () => {
-  console.log("Server running on port 3000");
+  console.log("Server running on port 5000");
 });
