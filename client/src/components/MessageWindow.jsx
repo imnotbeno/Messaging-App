@@ -1,11 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-//import Message from "./Message";
-import io from "socket.io-client";
+import Message from "./Message";
+// import io from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+// const socket = io("http://localhost:5000");
 
 const useStyles = makeStyles((theme) => ({
   messages: {
@@ -18,37 +18,14 @@ function MsgWindow(props) {
   const classes = useStyles();
 
   //Messages from bottom and passed through App.js
-  var messageList = props.message;
+  var messageList = props.message.chat;
   console.log(messageList);
 
-  // const [chat, setChat] = useState({
-  //   chat: [],
-  //   // user: "",
-  //   // content: "",
-  // });
-
-  //ComponentDidMount equivalent
-  // useEffect(() => {
-  //   socket.on("init", (msg) => {
-  //     //Get last 10 messages from DB
-  //     //reverse to get the latest timestamp
-  //     console.log(msg.reverse());
-  //   });
-  // }, []);
-
-  //Send a new message to the server
+  // //Send a new message to the server
   // socket.emit("newMessage", {
   //   user: messageList.user,
   //   content: messageList.content,
   // });
-
-  // setChat((prev) => {
-  //   return {
-  //     chat: [...prev.chat, messageList],
-  //   };
-  // });
-
-  //console.log(chat);
 
   return (
     <div>
@@ -56,7 +33,7 @@ function MsgWindow(props) {
         <CssBaseline />
         <Toolbar />
         {/* {messageList.map((message, index) => (
-          <Message key={index} id={index} text={message} />
+          <Message key={index} id={index} text={message.content} />
         ))} */}
       </main>
     </div>

@@ -8,7 +8,7 @@ function Message(props) {
   return (
     <Paper>
       <div>
-        <p>{props.text}</p>
+        <p>{props.content}</p>
       </div>
     </Paper>
   );
