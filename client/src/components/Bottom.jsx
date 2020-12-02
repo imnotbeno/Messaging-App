@@ -3,7 +3,7 @@ import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-//import SendIcon from "@material-ui/icons/Send";
+import SendIcon from "@material-ui/icons/Send";
 
 //CSS Styling
 const useStyles = makeStyles((theme) => ({
@@ -16,19 +16,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Bottom(props) {
-
   //classNames
   const classes = useStyles();
-  
+
   //Handlers
-  const [inputText, setInput] = useState("");
+  const [inputText, setInput] = useState({
+    username: "",
+    message: "",
+  });
 
   function inputHandler(event) {
     var value = event.target.value;
-    setInput(value);
+    setInput((prev) => {
+      return {
+        username: prev.username,
+        message: value,
+      };
+    });
   }
 
-  function clickHandler(){
+  function clickHandler() {
     props.addMessage(inputText);
     setInput("");
   }
@@ -47,7 +54,7 @@ function Bottom(props) {
         variant="contained"
         color="default"
         className={classes.button}
-        // endIcon={<SendIcon />}
+        endIcon={<SendIcon />}
         onClick={clickHandler}
       >
         Send
