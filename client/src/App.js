@@ -32,21 +32,32 @@ function App(props) {
           chat: [...msgReversed],
           user: "",
           content: "",
-        }
+        };
       });
     });
   }, []);
 
-  //New message from Bottom.jsx
+  //Handle new message from Bottom.jsx
   function messageHandler(inputText) {
+    //Send a new message to the server
+    socket.emit("newMessage", {
+      user: inputText.user,
+      content: inputText.content,
+    });
+
     setMessage((prev) => {
       return {
         chat: [...prev.chat, inputText],
-        user: inputText.username,
-        content: inputText.message,
+        user: "",
+        content: "",
       };
     });
   }
+
+  // function scrollToBottom(){
+  //   const chatWindow = document.getElementById("chatWindow");
+  //   chatWindow.scrollTop = chatWindow.scrollHeight;
+  // }
 
   const classes = useStyles();
   return (

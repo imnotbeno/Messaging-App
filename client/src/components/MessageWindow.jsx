@@ -21,12 +21,6 @@ function MsgWindow(props) {
   var messageList = props.message.chat;
   console.log(messageList);
 
-  // //Send a new message to the server
-  // socket.emit("newMessage", {
-  //   user: messageList.user,
-  //   content: messageList.content,
-  // });
-
   return (
     <div>
       <main className={classes.messages}>

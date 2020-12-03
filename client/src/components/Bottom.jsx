@@ -37,7 +37,12 @@ function Bottom(props) {
 
   function clickHandler() {
     props.addMessage(inputText);
-    setInput("");
+    setInput((prev) => {
+      return {
+        username: prev.username,
+        message: "",
+      };
+    });
   }
 
   return (
