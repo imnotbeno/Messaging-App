@@ -35,6 +35,16 @@ function App(props) {
         };
       });
     });
+
+    socket.on("push", (msg) => {
+      setMessage((prev) => {
+        return {
+          chat: [...prev.chat, msg],
+        }
+      });
+    });
+
+
   }, []);
 
   //Handle new message from Bottom.jsx
