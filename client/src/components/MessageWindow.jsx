@@ -26,10 +26,10 @@ function MsgWindow(props) {
       <main className={classes.messages}>
         <CssBaseline />
         <Toolbar />
-        {/* <Message content="Hello"/> */}
-        {messageList.map((message, index) => (
+        <Message />
+        {/* {messageList.map((message, index) => (
           <Message key={index} id={index} content={message.content} />
-        ))}
+        ))} */}
       </main>
     </div>
   );

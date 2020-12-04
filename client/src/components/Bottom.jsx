@@ -9,6 +9,7 @@ import SendIcon from "@material-ui/icons/Send";
 const useStyles = makeStyles((theme) => ({
   bottom: {
     display: "flex",
+    backgroundColor: "white",
   },
   button: {
     boxShadow: "none",
@@ -46,24 +47,26 @@ function Bottom(props) {
   }
 
   return (
-    <footer className={classes.bottom}>
-      <TextField
-        id="outlined-basic"
-        label="Input Message"
-        variant="outlined"
-        fullWidth={true}
-        onChange={inputHandler}
-        value={inputText.content}
-      />
-      <Button
-        variant="contained"
-        color="default"
-        className={classes.button}
-        endIcon={<SendIcon />}
-        onClick={clickHandler}
-      >
-        Send
-      </Button>
+    <footer>
+      <div  className={classes.bottom}>
+        <TextField
+          id="outlined-basic"
+          label="Input Message"
+          variant="outlined"
+          fullWidth={true}
+          onChange={inputHandler}
+          value={inputText.content}
+        />
+        <Button
+          variant="contained"
+          color="default"
+          className={classes.button}
+          endIcon={<SendIcon />}
+          onClick={clickHandler}
+        >
+          Send
+        </Button>
+      </div>
     </footer>
   );
 }
