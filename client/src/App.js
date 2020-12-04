@@ -19,11 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App(props) {
-  const [message, setMessage] = useState({
-    chat: [],
-    user: "",
-    content: "",
-  });
+  const [chat, setChat] = useState([]);
 
   //ComponentDidMount equivalent
   // useEffect(() => {
@@ -58,12 +54,8 @@ function App(props) {
     //   content: inputText.content,
     // });
 
-    setMessage((prev) => {
-      return {
-        chat: [...prev.chat, inputText],
-        user: "",
-        content: "",
-      };
+    setChat((prevChat) => {
+      return [...prevChat, inputText];
     });
   }
 
@@ -78,7 +70,7 @@ function App(props) {
       <div className={classes.root}>
         <TitleBar />
         <NavBar />
-        <MsgWindow message={message} />
+        <MsgWindow chat={chat} />
       </div>
       <div className={classes.bottomBox}>
         <Bottom addMessage={messageHandler} />

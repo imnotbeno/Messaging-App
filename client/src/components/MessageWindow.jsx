@@ -1,11 +1,8 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Message from "./Message";
-// import io from "socket.io-client";
-
-// const socket = io("http://localhost:5000");
 
 const useStyles = makeStyles((theme) => ({
   messages: {
@@ -18,7 +15,7 @@ function MsgWindow(props) {
   const classes = useStyles();
 
   //Messages from bottom and passed through App.js
-  var messageList = props.message.chat;
+  var messageList = props.chat;
   console.log(messageList);
 
   return (
@@ -26,10 +23,14 @@ function MsgWindow(props) {
       <main className={classes.messages}>
         <CssBaseline />
         <Toolbar />
-        <Message />
-        {/* {messageList.map((message, index) => (
-          <Message key={index} id={index} content={message.content} />
-        ))} */}
+        {messageList.map((message, index) => (
+          <Message
+            key={index}
+            id={index}
+            content={message.content}
+            username={message.username}
+          />
+        ))}
       </main>
     </div>
   );

@@ -23,7 +23,7 @@ function Bottom(props) {
   //Handlers
   const [inputText, setInput] = useState({
     username: "Niko",
-    message: "",
+    content: "",
   });
 
   function inputHandler(event) {
@@ -31,7 +31,7 @@ function Bottom(props) {
     setInput((prev) => {
       return {
         username: prev.username,
-        message: value,
+        content: value,
       };
     });
   }
@@ -41,7 +41,7 @@ function Bottom(props) {
     setInput((prev) => {
       return {
         username: prev.username,
-        message: "",
+        content: "",
       };
     });
   }
