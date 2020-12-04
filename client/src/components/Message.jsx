@@ -3,12 +3,32 @@ import Paper from "@material-ui/core/Paper";
 //import CssBaseline from "@material-ui/core/CssBaseline";
 //import List from "@material-ui/core/List";
 //import ListItem from "@material-ui/core/ListItem";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
+
+const useStyles = makeStyles((theme) => ({
+  message: {
+    padding: 15,
+  },
+  spacing: {
+    marginBot: 10,
+  },
+  space: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+}));
 
 function Message(props) {
+  const classes = useStyles();
+
   return (
-    <Paper>
-      <div>
-        <p>
+    <div>
+      <Paper>
+        <Typography className={classes.message}>
+          <Typography variant="h5">Niko</Typography>
+          <Divider className={classes.spacing} />
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis
           finibus elementum. Nulla ac lobortis ex. Phasellus accumsan dui ac
           mattis laoreet. Ut quis justo vel dolor finibus scelerisque. Phasellus
@@ -54,10 +74,18 @@ function Message(props) {
           ligula vestibulum mi pellentesque euismod. Proin venenatis aliquet
           elit, placerat aliquam urna suscipit sed. Curabitur dignissim non
           velit imperdiet ultrices. Pellentesque ullamcorper vulputate maximus.
-          Cras mattis condimentum ipsum, nec viverra diam dictum et.{" "}
-        </p>
-      </div>
-    </Paper>
+          Cras mattis condimentum ipsum, nec viverra diam dictum et.
+        </Typography>
+      </Paper>
+      <Divider className={classes.space} />
+      <Paper>
+        <Typography className={classes.message}>
+          <Typography variant="h5">Niko</Typography>
+          <Divider className={classes.spacing} />
+          Ok, whatever you say...
+        </Typography>
+      </Paper>
+    </div>
   );
 }
 
