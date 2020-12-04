@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 15,
   },
   spacing: {
-    marginBot: 10,
+    marginBottom: 10,
   },
   space: {
     marginTop: 20,
