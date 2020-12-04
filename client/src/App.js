@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
   },
   bottomBox: {
     flexDirection: "column",
-    jusitfyContent: "flex-end"
+    jusitfyContent: "flex-end",
+  },
+  main: {
+    // backgroundColor: "#1F1B24",
+    backgroundColor: "#322f3d",
   },
 }));
 
@@ -66,7 +70,7 @@ function App(props) {
 
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.main}>
       <div className={classes.root}>
         <TitleBar />
         <NavBar />
