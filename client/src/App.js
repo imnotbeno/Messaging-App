@@ -3,10 +3,11 @@ import NavBar from "./components/NavBar";
 import MsgWindow from "./components/MessageWindow";
 import Bottom from "./components/Bottom";
 import { makeStyles } from "@material-ui/core";
-import { React, useState, useEffect } from "react";
-//import io from "socket.io-client";
+import { React, useState } from "react";
+//import useEffect from "react";
+import io from "socket.io-client";
 
-//const socket = io("http://localhost:5000");
+const socket = io("http://localhost:5000");
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,10 +54,10 @@ function App(props) {
   //Handle new message from Bottom.jsx
   function messageHandler(inputText) {
     //Send a new message to the server
-    // socket.emit("newMessage", {
-    //   user: inputText.user,
-    //   content: inputText.content,
-    // });
+    socket.emit("newMessage", {
+      user: inputText.username,
+      content: inputText.content,
+    });
 
     setChat((prevChat) => {
       return [...prevChat, inputText];
