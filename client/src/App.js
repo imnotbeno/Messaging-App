@@ -53,11 +53,6 @@ function App(props) {
     });
   }
 
-  // function scrollToBottom() {
-  //   const chatWindow = document.getElementById("chatWindow");
-  //   chatWindow.scrollTop = chatWindow.scrollHeight;
-  // }
-
   const classes = useStyles();
   return (
     <div>

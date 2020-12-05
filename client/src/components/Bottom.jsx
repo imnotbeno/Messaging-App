@@ -37,18 +37,20 @@ function Bottom(props) {
   }
 
   function clickHandler() {
-    props.addMessage(inputText);
-    setInput((prev) => {
-      return {
-        username: prev.username,
-        content: "",
-      };
-    });
+    if (inputText.content) {
+      props.addMessage(inputText);
+      setInput((prev) => {
+        return {
+          username: prev.username,
+          content: "",
+        };
+      });
+    }
   }
 
   return (
     <footer>
-      <div  className={classes.bottom}>
+      <div className={classes.bottom}>
         <TextField
           id="outlined-basic"
           label="Input Message"
