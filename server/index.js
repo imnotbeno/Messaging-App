@@ -48,6 +48,7 @@ io.on("connection", (socket) => {
         console.log("Message successfully saved");
       }
     });
+    
     //Notify all users about new message
     socket.broadcast.emit("push", msg);
   });

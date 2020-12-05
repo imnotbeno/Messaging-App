@@ -36,13 +36,12 @@ function App(props) {
       });
     });
 
-    //   socket.on("push", (msg) => {
-    //     setMessage((prev) => {
-    //       return {
-    //         chat: [...prev.chat, msg],
-    //       }
-    //     });
-    //   });
+    //Broadcasted messages from other users
+    socket.on("push", (msg) => {
+      setChat((prevChat) => {
+        return [...prevChat, msg];
+      });
+    });
   }, []);
 
   //Handle new message from Bottom.jsx
