@@ -36,7 +36,7 @@ function Message(props) {
           {props.content}
         </Typography>
       </Paper>
-      <Divider className={classes.space} />
+      <div className={classes.space}/>
     </div>
   );
 }

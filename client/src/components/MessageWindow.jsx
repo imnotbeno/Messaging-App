@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
   messages: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    marginBottom: 40,
   },
 }));
 
