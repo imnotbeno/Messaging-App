@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useRef, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,6 +18,15 @@ function MsgWindow(props) {
   var messageList = props.chat;
   console.log(messageList);
 
+  //Logic to scroll to bottom
+  const messagesEndRef = useRef(null);
+
+  function scrollToBottom() {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+
+  useEffect(scrollToBottom, [messageList]);
+  
   return (
     <div>
       <main className={classes.messages}>
@@ -32,6 +41,7 @@ function MsgWindow(props) {
           />
         ))}
       </main>
+      <div ref={messagesEndRef} />
     </div>
   );
 }

@@ -8,6 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
+  
+  messagePaper: {
+    flexGrow: 1,
+  },
   message: {
     padding: 15,
   },
@@ -25,7 +29,7 @@ function Message(props) {
 
   return (
     <div>
-      <Paper>
+      <Paper className={classes.messagePaper}>
         <Typography className={classes.message}>
           <Typography>{props.username}</Typography>
           <Divider className={classes.spacing} />

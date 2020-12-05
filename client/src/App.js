@@ -16,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     jusitfyContent: "flex-end",
   },
-  main: {
-    // backgroundColor: "#1F1B24",
-    backgroundColor: "#322f3d",
-  },
 }));
 
 function App(props) {
@@ -57,18 +53,18 @@ function App(props) {
     });
   }
 
-  // function scrollToBottom(){
+  // function scrollToBottom() {
   //   const chatWindow = document.getElementById("chatWindow");
   //   chatWindow.scrollTop = chatWindow.scrollHeight;
   // }
 
   const classes = useStyles();
   return (
-    <div className={classes.main}>
+    <div>
       <div className={classes.root}>
         <TitleBar />
         <NavBar />
-        <MsgWindow chat={chat} />
+        <MsgWindow id="chatWindow" chat={chat} />
       </div>
       <div className={classes.bottomBox}>
         <Bottom addMessage={messageHandler} />
