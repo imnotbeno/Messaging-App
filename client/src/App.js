@@ -22,14 +22,14 @@ function App(props) {
   const [chat, setChat] = useState([]);
   const [newUser, setNewUser] = useState([]);
 
+  socket.on("connect", () => {
+    setNewUser((prevUsers) => {
+      return [...prevUsers, socket.id];
+    });
+  });
+
   //ComponentDidMount equivalent
   useEffect(() => {
-    socket.on("connect", () => {
-      setNewUser((prevUsers) => {
-        return [...prevUsers, socket.id];
-      });
-    });
-
     socket.on("init", (msg) => {
       //Get last 10 messages from DB
       //reverse to get the latest timestamp
