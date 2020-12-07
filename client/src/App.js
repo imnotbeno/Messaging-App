@@ -20,10 +20,14 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   const [chat, setChat] = useState([]);
+  const [newUser, setNewUser] = useState([]);
 
   //ComponentDidMount equivalent
   useEffect(() => {
     socket.on("init", (msg) => {
+      setNewUser((prevUsers) => {
+        return [...prevUsers, socket.id]
+      });
       //Get last 10 messages from DB
       //reverse to get the latest timestamp
       var msgReversed = msg.reverse();
@@ -58,7 +62,7 @@ function App(props) {
     <div>
       <div className={classes.root}>
         <TitleBar />
-        <NavBar />
+        <NavBar newUser={newUser} />
         <MsgWindow id="chatWindow" chat={chat} />
       </div>
       <div className={classes.bottomBox}>

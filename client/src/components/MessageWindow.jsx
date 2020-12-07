@@ -17,7 +17,6 @@ function MsgWindow(props) {
 
   //Messages from bottom and passed through App.js
   var messageList = props.chat;
-  console.log(messageList);
 
   //Logic to scroll to bottom
   const messagesEndRef = useRef(null);

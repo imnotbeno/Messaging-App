@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -33,7 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NavBar() {
+function NavBar(props) {
+  
+  var userList = props.newUser;
+
   const classes = useStyles();
 
   return (
@@ -74,14 +77,12 @@ function NavBar() {
           </Typography>
           <Divider />
           <List>
-            {["Niko Bec", "Michael Schuhmacher", "Emily Blunt"].map(
-              (text, index) => (
-                <ListItem button key={text}>
-                  <Avatar>{text}</Avatar>
-                  <ListItemText className={classes.names}>{text}</ListItemText>
-                </ListItem>
-              )
-            )}
+            {userList.map((user, index) => (
+              <ListItem button key={user}>
+                <Avatar>{user}</Avatar>
+                <ListItemText className={classes.names}>{user}</ListItemText>
+              </ListItem>
+            ))}
           </List>
         </div>
       </Drawer>
