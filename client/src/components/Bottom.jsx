@@ -36,7 +36,8 @@ function Bottom(props) {
     });
   }
 
-  function clickHandler() {
+  function clickHandler(event) {
+    event.preventDefault();
     if (inputText.content) {
       props.addMessage(inputText);
       setInput((prev) => {
@@ -49,27 +50,28 @@ function Bottom(props) {
   }
 
   return (
-    <footer>
+    <form className="inputFooter" onSubmit={clickHandler}>
       <div className={classes.bottom}>
         <TextField
           id="outlined-basic"
           label="Input Message"
           variant="outlined"
           fullWidth={true}
+          autoComplete="off"
           onChange={inputHandler}
           value={inputText.content}
         />
         <Button
           variant="contained"
           color="default"
+          type="submit"
           className={classes.button}
           endIcon={<SendIcon />}
-          onClick={clickHandler}
         >
           Send
         </Button>
       </div>
-    </footer>
+    </form>
   );
 }
 

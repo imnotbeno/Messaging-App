@@ -1,4 +1,4 @@
-footer {
+.inputFooter {
     bottom: 0;
     width: calc(100% - 264px);
     position: fixed;
