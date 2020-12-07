@@ -24,10 +24,13 @@ function App(props) {
 
   //ComponentDidMount equivalent
   useEffect(() => {
-    socket.on("init", (msg) => {
+    socket.on("connect", () => {
       setNewUser((prevUsers) => {
-        return [...prevUsers, socket.id]
+        return [...prevUsers, socket.id];
       });
+    });
+
+    socket.on("init", (msg) => {
       //Get last 10 messages from DB
       //reverse to get the latest timestamp
       var msgReversed = msg.reverse();
