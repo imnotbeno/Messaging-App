@@ -1,12 +1,23 @@
 import App from "./App";
 import Login from "./Login";
-
-var isLoggedIn = false;
+import { React, useState } from "react";
 
 function Chat() {
-  return <div>
-      {isLoggedIn ? (<App />) : (<Login />)}
-  </div>;
+  const [userList, setNewUserList] = useState([]);
+
+  function addUser(newUser) {
+    if (newUser) {
+      setNewUserList((prevNewUsers) => {
+        return [...prevNewUsers, newUser];
+      });
+    }
+  }
+
+  return (
+    <div>
+      {(userList.length > 0) ? <App newUser={userList} /> : <Login addNewUser={addUser} />}
+    </div>
+  );
 }
 
 export default Chat;

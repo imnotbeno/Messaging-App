@@ -20,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   const [chat, setChat] = useState([]);
-  const [newUser, setNewUser] = useState([]);
+  // const [newUser, setNewUser] = useState([]);
 
-  socket.on("connect", () => {
-    setNewUser((prevUsers) => {
-      return [...prevUsers, socket.id];
-    });
-  });
+  // socket.on("connect", () => {
+  //   setNewUser((prevUsers) => {
+  //     return [...prevUsers, socket.id];
+  //   });
+  // });
 
   //ComponentDidMount equivalent
   useEffect(() => {
@@ -51,7 +51,7 @@ function App(props) {
   function messageHandler(inputText) {
     //Send a new message to the server
     socket.emit("newMessage", {
-      user: inputText.username,
+      user: props.newUser,
       content: inputText.content,
     });
 
@@ -65,7 +65,7 @@ function App(props) {
     <div>
       <div className={classes.root}>
         <TitleBar />
-        <NavBar newUser={newUser} />
+        <NavBar newUser={props.newUser} />
         <MsgWindow id="chatWindow" chat={chat} />
       </div>
       <div className={classes.bottomBox}>

@@ -22,7 +22,7 @@ function Bottom(props) {
 
   //Handlers
   const [inputText, setInput] = useState({
-    username: "Niko",
+    username: "",
     content: "",
   });
 

@@ -1,10 +1,34 @@
 import TextField from "@material-ui/core/TextField";
+import { React, useState } from "react";
 
-function Login() {
+function Login(props) {
+  const [newUser, setNewUser] = useState("");
+
+  function inputHandler(event) {
+    var inputText = event.target.value;
+    setNewUser(inputText);
+  }
+
+  function handleNewUser(event) {
+    event.preventDefault();
+    if (newUser) {
+      props.addNewUser(newUser);
+    }
+    setNewUser("");
+  }
+
   return (
-    <form>
-      <TextField id="standard-basic" label="Input Username" autoComplete="off" />
-    </form>
+    <div>
+      <form onSubmit={handleNewUser}>
+        <TextField
+          id="standard-basic"
+          label="Input Username"
+          autoComplete="off"
+          onChange={inputHandler}
+          value={newUser}
+        />
+      </form>
+    </div>
   );
 }
 
