@@ -66,7 +66,7 @@ function App(props) {
       <div className={classes.root}>
         <TitleBar />
         <NavBar newUser={props.newUser} />
-        <MsgWindow id="chatWindow" chat={chat} />
+        <MsgWindow id="chatWindow" chat={chat} username={props.newUser} />
       </div>
       <div className={classes.bottomBox}>
         <Bottom addMessage={messageHandler} />
