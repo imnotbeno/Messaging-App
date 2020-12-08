@@ -51,7 +51,7 @@ function App(props) {
   function messageHandler(inputText) {
     //Send a new message to the server
     socket.emit("newMessage", {
-      user: props.newUser,
+      user: inputText.username,
       content: inputText.content,
     });
 
