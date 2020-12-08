@@ -35,14 +35,9 @@ function App(props) {
 
     //Broadcasted messages from other users
     socket.on("push", (msg) => {
+      console.log(msg);
       setChat((prevChat) => {
         return [...prevChat, msg];
-      });
-    });
-
-    socket.on("newUser", (user) => {
-      setUserList((prevUsers) => {
-        return [...prevUsers, user]
       });
     });
   }, []);
@@ -59,9 +54,9 @@ function App(props) {
       return [...prevChat, inputText];
     });
 
-    setUserList((prevUsers) =>  {
-      return [...prevUsers, props.newUser]
-    });
+    // setUserList((prevUsers) =>  {
+    //   return [...prevUsers, props.newUser]
+    // });
   }
 
   const classes = useStyles();

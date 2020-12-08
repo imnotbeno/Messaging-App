@@ -49,11 +49,8 @@ io.on("connection", (socket) => {
       }
     });
 
-    //Notify all users about new user
-    socket.broadcast.emit("newUser", msg.user);
-
     //Notify all users about new message
-    socket.broadcast.emit("push", msg.content);
+    socket.broadcast.emit("push", msg);
   });
 });
 
