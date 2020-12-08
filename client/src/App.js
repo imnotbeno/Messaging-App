@@ -51,7 +51,7 @@ function App(props) {
   function messageHandler(inputText) {
     //Send a new message to the server
     socket.emit("newMessage", {
-      user: inputText.username,
+      user: props.newUser,
       content: inputText.content,
     });
 
@@ -65,7 +65,7 @@ function App(props) {
     <div>
       <div className={classes.root}>
         <TitleBar />
-        <NavBar newUser={props.newUser} />
+        <NavBar />
         <MsgWindow id="chatWindow" chat={chat} username={props.newUser} />
       </div>
       <div className={classes.bottomBox}>
