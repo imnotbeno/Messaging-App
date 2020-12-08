@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-//import Avatar from "@material-ui/core/Avatar";
+import Avatar from "@material-ui/core/Avatar";
 
 var drawerWidth = 240;
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar(props) {
   
-  //var userList = props.newUser;
+  var userList = props.users;
 
   const classes = useStyles();
 
@@ -77,12 +77,12 @@ function NavBar(props) {
           </Typography>
           <Divider />
           <List>
-            {/* {userList.map((user, index) => (
+            {userList.map((user, index) => (
               <ListItem button key={user}>
                 <Avatar>{user}</Avatar>
                 <ListItemText className={classes.names}>{user}</ListItemText>
               </ListItem>
-            ))} */}
+            ))}
           </List>
         </div>
       </Drawer>

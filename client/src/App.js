@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   const [chat, setChat] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   //ComponentDidMount equivalent
   useEffect(() => {
@@ -38,6 +39,12 @@ function App(props) {
         return [...prevChat, msg];
       });
     });
+
+    socket.on("newUser", (user) => {
+      setUserList((prevUsers) => {
+        return [...prevUsers, user]
+      });
+    });
   }, []);
 
   //Handle new message from Bottom.jsx
@@ -51,6 +58,10 @@ function App(props) {
     setChat((prevChat) => {
       return [...prevChat, inputText];
     });
+
+    setUserList((prevUsers) =>  {
+      return [...prevUsers, props.newUser]
+    });
   }
 
   const classes = useStyles();
@@ -58,7 +69,7 @@ function App(props) {
     <div>
       <div className={classes.root}>
         <TitleBar />
-        <NavBar />
+        <NavBar users={userList} />
         <MsgWindow id="chatWindow" chat={chat} username={props.newUser} />
       </div>
       <div className={classes.bottomBox}>

@@ -3,17 +3,17 @@ import Login from "./Login";
 import { React, useState } from "react";
 
 function Chat() {
-  const [userList, setNewUserList] = useState("");
+  const [user, setUser] = useState("");
 
   function addUser(newUser) {
     if (newUser) {
-      setNewUserList(newUser)
+      setUser(newUser)
     }
   }
 
   return (
     <div>
-      {userList ? <App newUser={userList} /> : <Login addNewUser={addUser} />}
+      {user ? <App newUser={user} /> : <Login addNewUser={addUser} />}
     </div>
   );
 }

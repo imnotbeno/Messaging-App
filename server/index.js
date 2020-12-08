@@ -48,9 +48,12 @@ io.on("connection", (socket) => {
         console.log("Message successfully saved");
       }
     });
-    
+
+    //Notify all users about new user
+    socket.broadcast.emit("newUser", msg.user);
+
     //Notify all users about new message
-    socket.broadcast.emit("push", msg);
+    socket.broadcast.emit("push", msg.content);
   });
 });
 
