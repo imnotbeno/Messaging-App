@@ -37,7 +37,7 @@ function MsgWindow(props) {
           <Message
             key={index}
             id={index}
-            content={message.content}
+            content={message}
             username={user}
           />
         ))}

@@ -21,31 +21,18 @@ function Bottom(props) {
   const classes = useStyles();
 
   //Handlers
-  const [inputText, setInput] = useState({
-    username: "",
-    content: "",
-  });
+  const [inputText, setInput] = useState("");
 
   function inputHandler(event) {
     var value = event.target.value;
-    setInput((prev) => {
-      return {
-        username: prev.username,
-        content: value,
-      };
-    });
+    setInput(value);
   }
 
   function clickHandler(event) {
     event.preventDefault();
-    if (inputText.content) {
+    if (inputText) {
       props.addMessage(inputText);
-      setInput((prev) => {
-        return {
-          username: prev.username,
-          content: "",
-        };
-      });
+      setInput("");
     }
   }
 
@@ -59,7 +46,7 @@ function Bottom(props) {
           fullWidth={true}
           autoComplete="off"
           onChange={inputHandler}
-          value={inputText.content}
+          value={inputText}
         />
         <Button
           variant="contained"
