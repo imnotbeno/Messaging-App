@@ -11,6 +11,11 @@ function Chat() {
     }
   }
 
+  //Fix message history 
+  //Your components do not mount properly
+
+
+
   return (
     <div>
       {user ? <App newUser={user} /> : <Login addNewUser={addUser} />}

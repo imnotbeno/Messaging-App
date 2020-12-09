@@ -54,9 +54,6 @@ function App(props) {
       return [...prevChat, inputText];
     });
 
-    // setUserList((prevUsers) =>  {
-    //   return [...prevUsers, props.newUser]
-    // });
   }
 
   const classes = useStyles();
