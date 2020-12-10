@@ -22,20 +22,18 @@ function App(props) {
   const [chat, setChat] = useState([]);
   const [userList, setUserList] = useState([]);
 
-  //ComponentDidMount equivalent
+  console.log(props.newUser);
+
   useEffect(() => {
+ 
     socket.on("init", (msg) => {
-      //Get last 10 messages from DB
-      //reverse to get the latest timestamp
-      var msgReversed = msg.reverse();
+      var msgReverse = msg.reverse();
       setChat(() => {
-        return [...msgReversed];
+        return [...msgReverse];
       });
     });
 
-    //Broadcasted messages from other users
     socket.on("push", (msg) => {
-      console.log(msg);
       setChat((prevChat) => {
         return [...prevChat, msg];
       });
@@ -53,7 +51,6 @@ function App(props) {
     setChat((prevChat) => {
       return [...prevChat, inputText];
     });
-
   }
 
   const classes = useStyles();
