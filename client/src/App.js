@@ -6,7 +6,12 @@ import { makeStyles } from "@material-ui/core";
 import { React, useState, useEffect } from "react";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("http://localhost:5000", {
+  withCredentials: true,
+  extraHeaders: {
+    "custom-header": "login"
+  }
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,12 +36,14 @@ function App(props) {
       setChat(() => {
         return [...msgReverse];
       });
+      console.log("Hello from app.js/init");
     });
 
     socket.on("push", (msg) => {
       setChat((prevChat) => {
         return [...prevChat, msg];
       });
+      console.log("Hello from app.js/push");
     });
   }, []);
 
