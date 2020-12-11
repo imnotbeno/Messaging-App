@@ -1,12 +1,12 @@
 import TextField from "@material-ui/core/TextField";
 import { React, useState } from "react";
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 
 function Login(props) {
   const [newUser, setNewUser] = useState("");
   //const [login, setLogin] = useState(false);
 
-  const history = useHistory();
+ //const history = useHistory();
 
   function inputHandler(event) {
     var inputText = event.target.value;
@@ -17,7 +17,7 @@ function Login(props) {
     event.preventDefault();
     if (newUser) {
       props.addNewUser(newUser);
-      history.push("/");
+     //history.push("/");
     }
     setNewUser("");
   }

@@ -9,8 +9,8 @@ import io from "socket.io-client";
 const socket = io("http://localhost:5000", {
   withCredentials: true,
   extraHeaders: {
-    "custom-header": "login"
-  }
+    "custom-header": "login",
+  },
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -27,23 +27,19 @@ function App(props) {
   const [chat, setChat] = useState([]);
   const [userList, setUserList] = useState([]);
 
-  console.log(props.newUser);
-
   useEffect(() => {
- 
     socket.on("init", (msg) => {
       var msgReverse = msg.reverse();
+      console.log(msgReverse);
       setChat(() => {
         return [...msgReverse];
       });
-      console.log("Hello from app.js/init");
     });
 
     socket.on("push", (msg) => {
       setChat((prevChat) => {
         return [...prevChat, msg];
       });
-      console.log("Hello from app.js/push");
     });
   }, []);
 

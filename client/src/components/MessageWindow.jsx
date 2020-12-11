@@ -17,7 +17,14 @@ function MsgWindow(props) {
 
   //Messages from bottom and passed through App.js
   var messageList = props.chat;
-  var user = props.username;
+  messageList.map((message) => {
+    console.log(message);
+    console.log(message.content);
+    console.log(message.user);
+    return 0;
+  });
+
+  //var user = props.username;
 
   //Logic to scroll to bottom
   const messagesEndRef = useRef(null);
@@ -37,8 +44,8 @@ function MsgWindow(props) {
           <Message
             key={index}
             id={index}
-            content={message}
-            username={user}
+            content={message.content}
+            username={message.user}
           />
         ))}
       </main>
