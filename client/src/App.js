@@ -26,19 +26,16 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   const [chat, setChat] = useState([]);
+  // const [messages, setMesssages] = useState({
+  //   user: "",
+  //   content: "",
+  // });
   const [userList, setUserList] = useState([]);
   const [user, setUser] = useState("");
-
-  function addUser(newUser) {
-    if (newUser) {
-      setUser(newUser);
-    }
-  }
 
   useEffect(() => {
     socket.on("init", (msg) => {
       var msgReverse = msg.reverse();
-      console.log(msgReverse);
       setChat(() => {
         return [...msgReverse];
       });
@@ -51,18 +48,35 @@ function App(props) {
     });
   }, []);
 
+  //Handle new username from Login.js
+  function addUser(newUser) {
+    if (newUser) {
+      setUser(newUser);
+    }
+  }
+
   //Handle new message from Bottom.jsx
   function messageHandler(inputText) {
+    //Set new message with user and content
+    // setMesssages({
+    //   user: user,
+    //   content: inputText,
+    // });
+
+    console.log(inputText);
+
     //Send a new message to the server
     socket.emit("newMessage", {
-      user: props.newUser,
-      content: inputText,
+      user: inputText.user,
+      content: inputText.content,
     });
 
+    //Set the whole chat
     setChat((prevChat) => {
       return [...prevChat, inputText];
     });
   }
+
 
   const classes = useStyles();
   return (
@@ -72,10 +86,10 @@ function App(props) {
           <div className={classes.root}>
             <TitleBar />
             <NavBar users={userList} />
-            <MsgWindow id="chatWindow" chat={chat} username={props.newUser} />
+            <MsgWindow id="chatWindow" chat={chat} username={user} />
           </div>
           <div className={classes.bottomBox}>
-            <Bottom addMessage={messageHandler} />
+            <Bottom addMessage={messageHandler} username={user}/>
           </div>
         </div>
       ) : (
