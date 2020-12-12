@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App(props) {
-  
+
   const classes = useStyles();
   const [chat, setChat] = useState([]);
   const [userList, setUserList] = useState([]);
@@ -45,12 +45,22 @@ function App(props) {
         return [...prevChat, msg];
       });
     });
+
+    socket.on("connect", (user) => {
+      setUserList((prevUsers) => {
+        return [...prevUsers, user];
+      })
+    });
+
   }, []);
 
   //Handle new username from Login.js
   function addUser(newUser) {
     if (newUser) {
       setUser(newUser);
+      setUserList((prevUsers) => {
+        return  [newUser];
+      });
     }
   }
 

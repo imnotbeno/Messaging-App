@@ -1,3 +1,9 @@
+body {
+    height: 1016px;
+    background-color: #222831;
+    font-family: 'Montserrat', sans-serif;
+}
+
 .inputFooter {
     bottom: 0;
     width: calc(100% - 264px);
