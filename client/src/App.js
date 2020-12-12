@@ -7,12 +7,7 @@ import { React, useState, useEffect } from "react";
 import io from "socket.io-client";
 import Login from "./Login";
 
-const socket = io("http://localhost:5000", {
-  withCredentials: true,
-  extraHeaders: {
-    "custom-header": "login",
-  },
-});
+const socket = io("http://localhost:5000");
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,15 +20,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App(props) {
+  
+  const classes = useStyles();
   const [chat, setChat] = useState([]);
-  // const [messages, setMesssages] = useState({
-  //   user: "",
-  //   content: "",
-  // });
   const [userList, setUserList] = useState([]);
   const [user, setUser] = useState("");
 
+  //ComponentDidMount equivalent
   useEffect(() => {
+
+    //Get message history from server on 
+    //connection (last 10 messages only)
     socket.on("init", (msg) => {
       var msgReverse = msg.reverse();
       setChat(() => {
@@ -41,6 +38,8 @@ function App(props) {
       });
     });
 
+    //Display messages broadcasted from
+    //from other users
     socket.on("push", (msg) => {
       setChat((prevChat) => {
         return [...prevChat, msg];
@@ -57,13 +56,6 @@ function App(props) {
 
   //Handle new message from Bottom.jsx
   function messageHandler(inputText) {
-    //Set new message with user and content
-    // setMesssages({
-    //   user: user,
-    //   content: inputText,
-    // });
-
-    console.log(inputText);
 
     //Send a new message to the server
     socket.emit("newMessage", {
@@ -77,8 +69,6 @@ function App(props) {
     });
   }
 
-
-  const classes = useStyles();
   return (
     <div>
       {user ? (

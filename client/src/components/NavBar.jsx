@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 function NavBar(props) {
   
   var userList = props.users;
-
   const classes = useStyles();
 
   return (

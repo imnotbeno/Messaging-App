@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function TitleBar() {
+  
   const classes = useStyles();
 
   return (

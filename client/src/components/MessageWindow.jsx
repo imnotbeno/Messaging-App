@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MsgWindow(props) {
+  
   const classes = useStyles();
 
-  //Messages from bottom and passed through App.js
+  //Complete chat
   var messageList = props.chat;
-  console.log(messageList);
 
   //Logic to scroll to bottom
   const messagesEndRef = useRef(null);

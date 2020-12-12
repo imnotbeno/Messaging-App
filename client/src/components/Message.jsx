@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Message(props) {
+  
   const classes = useStyles();
 
   return (

@@ -5,7 +5,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import SendIcon from "@material-ui/icons/Send";
 
-//CSS Styling
 const useStyles = makeStyles((theme) => ({
   bottom: {
     display: "flex",
@@ -17,15 +16,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Bottom(props) {
-  //classNames
-  const classes = useStyles();
 
-  //Handlers
+  const classes = useStyles();
   const [inputText, setInput] = useState({
     user: "",
     content: "",
   });
 
+  //Handle the text input and add the username to message object
   function inputHandler(event) {
     var value = event.target.value;
     setInput({
@@ -34,6 +32,7 @@ function Bottom(props) {
     });
   }
 
+  //Handle on submit event
   function clickHandler(event) {
     event.preventDefault();
     if (inputText.content) {
