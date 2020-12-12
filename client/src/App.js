@@ -5,6 +5,7 @@ import Bottom from "./components/Bottom";
 import { makeStyles } from "@material-ui/core";
 import { React, useState, useEffect } from "react";
 import io from "socket.io-client";
+import Login from "./Login";
 
 const socket = io("http://localhost:5000", {
   withCredentials: true,
@@ -26,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
 function App(props) {
   const [chat, setChat] = useState([]);
   const [userList, setUserList] = useState([]);
+  const [user, setUser] = useState("");
+
+  function addUser(newUser) {
+    if (newUser) {
+      setUser(newUser);
+    }
+  }
 
   useEffect(() => {
     socket.on("init", (msg) => {
@@ -59,14 +67,22 @@ function App(props) {
   const classes = useStyles();
   return (
     <div>
-      <div className={classes.root}>
-        <TitleBar />
-        <NavBar users={userList} />
-        <MsgWindow id="chatWindow" chat={chat} username={props.newUser} />
-      </div>
-      <div className={classes.bottomBox}>
-        <Bottom addMessage={messageHandler} />
-      </div>
+      {user ? (
+        <div>
+          <div className={classes.root}>
+            <TitleBar />
+            <NavBar users={userList} />
+            <MsgWindow id="chatWindow" chat={chat} username={props.newUser} />
+          </div>
+          <div className={classes.bottomBox}>
+            <Bottom addMessage={messageHandler} />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <Login addNewUser={addUser} />
+        </div>
+      )}
     </div>
   );
 }
