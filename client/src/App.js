@@ -46,7 +46,7 @@ function App(props) {
       });
     });
 
-    socket.on("connect", (user) => {
+    socket.on("newUsr", (user) => {
       setUserList((prevUsers) => {
         return [...prevUsers, user];
       })

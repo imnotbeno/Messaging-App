@@ -5,8 +5,6 @@ const io = require("socket.io")(http, {
   cors: {
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
-    allowedHeaders: ["custom-header"],
-    credentials: true
   },
 });
 const path = require("path");
@@ -51,7 +49,7 @@ io.on("connection", (socket) => {
       }
     });
 
-    socket.broadcast.emit("connect", msg.user);
+    socket.broadcast.emit("newUsr", msg.user);
     //Notify all users about new message
     socket.broadcast.emit("push", msg);
   });

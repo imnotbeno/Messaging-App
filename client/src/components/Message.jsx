@@ -31,11 +31,11 @@ function Message(props) {
   return (
     <div>
       <Paper className={classes.messagePaper}>
-        <Typography className={classes.message}>
+        <div className={classes.message}>
           <Typography>{props.username}</Typography>
           <Divider className={classes.spacing} />
           {props.content}
-        </Typography>
+        </div>
       </Paper>
       <div className={classes.space}/>
     </div>
