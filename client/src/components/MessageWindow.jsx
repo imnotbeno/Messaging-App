@@ -5,8 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Message from "./Message";
 
 const useStyles = makeStyles((theme) => ({
-  messages: {
-    flexGrow: 1,
+  messages: {    
     padding: theme.spacing(3),
     marginBottom: 50,
   },
@@ -31,7 +30,7 @@ function MsgWindow(props) {
   
   return (
     <div>
-      <main className={classes.messages}>
+      <main className="messages">
         <CssBaseline />
         <Toolbar />
         {messageList.map((message, index) => (

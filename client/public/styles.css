@@ -11,3 +11,9 @@ body {
     padding: 1%;
     margin-left: 252px; 
 }
+
+.messages {
+    padding: 30px;
+    margin-bottom: 50px;
+    width: 1500px;
+}
