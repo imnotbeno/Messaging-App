@@ -4,16 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Message from "./Message";
 
-const useStyles = makeStyles((theme) => ({
-  messages: {    
-    padding: theme.spacing(3),
-    marginBottom: 50,
-  },
-}));
-
 function MsgWindow(props) {
-  
-  const classes = useStyles();
 
   //Complete chat
   var messageList = props.chat;
@@ -29,8 +20,8 @@ function MsgWindow(props) {
   useEffect(scrollToBottom, [messageList]);
   
   return (
-    <div>
-      <main className="messages">
+    <div className="messages">
+      <main>
         <CssBaseline />
         <Toolbar />
         {messageList.map((message, index) => (
