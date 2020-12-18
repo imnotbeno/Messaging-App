@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
@@ -11,7 +12,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const Message = require("./message");
 
-mongoose.connect("mongodb://localhost:27017/messagesDB", {
+//"mongodb://localhost:27017/messagesDB"
+mongoose.connect(process.env.MONGO_ATLAS, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
