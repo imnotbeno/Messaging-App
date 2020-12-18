@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,8 +9,8 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
-import AddBoxIcon from '@material-ui/icons/AddBox';
-
+import AddBoxIcon from "@material-ui/icons/AddBox";
+import TextField from "@material-ui/core/TextField";
 
 var drawerWidth = 240;
 
@@ -39,6 +39,38 @@ function NavBar(props) {
   var userList = props.users;
   const classes = useStyles();
 
+  const [rooms, setRooms] = useState([]);
+  const [roomName, setRoomName] = useState([]);
+  const [name, setName] = useState("");
+
+  function confirmName(event) {
+    event.preventDefault();
+    setRooms(() => {
+      return [...name];
+    });
+    setRoomName([]);
+  }
+
+  function nameRoom(event) {
+    event.preventDefault();
+    var value = event.target.value;
+    setName(value);
+  }
+
+  function createNewRoom() {
+    setRoomName(() => {
+      return [
+        <form onSubmit={confirmName}>
+          <TextField
+            onChange={nameRoom}
+            label="Enter Room Name"
+            variant="outlined"
+          />
+        </form>,
+      ];
+    });
+  }
+
   return (
     <div className="nav-bar">
       <CssBaseline />
@@ -61,16 +93,22 @@ function NavBar(props) {
         <Divider />
         <div className={classes.drawerContainer}>
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
+            <ListItem button>
+              <ListItemText primary="General" />
+            </ListItem>
+            {rooms.map((room) => (
+              <ListItem button key={room}>
+                <ListItemText>{room}</ListItemText>
               </ListItem>
             ))}
-            <ListItem button>
+            {roomName.map((room) => (
+              <ListItem button key={room}>
+                <ListItemText>{room}</ListItemText>
+              </ListItem>
+            ))}
+            <ListItem button onClick={createNewRoom}>
               <AddBoxIcon />
-              <ListItemText
-                primary="Create New Room"
-              />
+              <ListItemText primary="Create New Room" />
             </ListItem>
           </List>
           <Typography

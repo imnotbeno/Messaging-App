@@ -53,6 +53,7 @@ io.on("connection", (socket) => {
     //Notify all users about new message
     socket.broadcast.emit("push", msg);
   });
+
 });
 
 http.listen(5000, () => {
