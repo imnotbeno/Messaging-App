@@ -12,13 +12,18 @@ const path = require("path");
 const mongoose = require("mongoose");
 const Message = require("./message");
 
-//"mongodb://localhost:27017/messagesDB"
-mongoose.connect(process.env.MONGO_ATLAS, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, "..", "client")));
+//"mongodb://localhost:27017/messagesDB"
+mongoose
+  .connect(process.env.MONGO_ATLAS, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database successfully connected!"))
+  .catch((err) => console.log(err));
+
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
 io.on("connection", (socket) => {
   console.log("a user has connected!");
@@ -55,9 +60,8 @@ io.on("connection", (socket) => {
     //Notify all users about new message
     socket.broadcast.emit("push", msg);
   });
-
 });
 
-http.listen(5000, () => {
-  console.log("Server running on port 5000");
+http.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
