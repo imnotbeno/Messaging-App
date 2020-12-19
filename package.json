@@ -1,0 +1,30 @@
+{
+  "name": "message-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "dev": "concurrently --kill-others \"heroku local\" \"npm run start --prefix ./client\"",
+    "postinstall": "npm install --prefix ./server && npm install --prefix ./client && npm run build --prefix ./client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+  },
+  "engines": {
+    "node": "14.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imnotbeno/Messaging-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imnotbeno/Messaging-App/issues"
+  },
+  "homepage": "https://github.com/imnotbeno/Messaging-App#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
