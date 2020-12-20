@@ -12,6 +12,7 @@ import Avatar from "@material-ui/core/Avatar";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
 var drawerWidth = 240;
 
@@ -41,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     textAlign: "center",
   },
+  addRoomButton: {
+    boxShadow: "none",
+  },
 }));
 
 function NavBar(props) {
@@ -53,16 +57,14 @@ function NavBar(props) {
 
   function confirmName(event) {
     event.preventDefault();
-    setRooms(() => {
-      return [...name];
+    setRooms((prevRooms) => {
+      return [...prevRooms, name];
     });
     setRoomName([]);
   }
 
   function nameRoom(event) {
-    event.preventDefault();
     var value = event.target.value;
-    console.log(value);
     setName(value);
   }
 
@@ -81,7 +83,14 @@ function NavBar(props) {
               },
             }}
           />
-          <Button>+</Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="default"
+            className={classes.addRoomButton}
+          >
+            <AddCircleOutlineIcon />
+          </Button>
         </form>,
       ];
     });
