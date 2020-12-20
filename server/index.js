@@ -35,6 +35,11 @@ io.on("connection", (socket) => {
       }
     });
 
+  //add new users
+  socket.on("newUsr", (newUser) => {
+    socket.broadcast.emit("connUser", newUser);
+  });
+
   // Listening to connected users for new messages
   socket.on("newMessage", (msg) => {
     // Create new message and store it in the db
@@ -51,7 +56,6 @@ io.on("connection", (socket) => {
       }
     });
 
-    socket.broadcast.emit("newUsr", msg.user);
     //Notify all users about new message
     socket.broadcast.emit("push", msg);
   });

@@ -7,7 +7,7 @@ import { React, useState, useEffect } from "react";
 import io from "socket.io-client";
 import Login from "./Login";
 
-const socket = io();
+const socket = io("");
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +46,8 @@ function App(props) {
       });
     });
 
-    socket.on("newUsr", (user) => {
+    socket.on("connUser", (user) => {
+      console.log(user);
       setUserList((prevUsers) => {
         return [...prevUsers, user];
       })
@@ -57,6 +58,7 @@ function App(props) {
   //Handle new username from Login.js
   function addUser(newUser) {
     if (newUser) {
+      socket.emit("newUsr", newUser);
       setUser(newUser);
       setUserList((prevUsers) => {
         return  [newUser];
