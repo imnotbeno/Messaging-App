@@ -11,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Avatar from "@material-ui/core/Avatar";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 var drawerWidth = 240;
 
@@ -33,6 +34,13 @@ const useStyles = makeStyles((theme) => ({
   navBarTitle: {
     padding: 10,
   },
+  addRoom: {
+    display: "flex",
+  },
+  addRoomLabel: {
+    fontSize: 14,
+    textAlign: "center",
+  },
 }));
 
 function NavBar(props) {
@@ -54,18 +62,26 @@ function NavBar(props) {
   function nameRoom(event) {
     event.preventDefault();
     var value = event.target.value;
+    console.log(value);
     setName(value);
   }
 
   function createNewRoom() {
     setRoomName(() => {
       return [
-        <form onSubmit={confirmName}>
+        <form onSubmit={confirmName} className={classes.addRoom}>
           <TextField
             onChange={nameRoom}
             label="Enter Room Name"
             variant="outlined"
+            InputLabelProps={{
+              classes: {
+                root: classes.addRoomLabel,
+                focused: "false",
+              },
+            }}
           />
+          <Button>+</Button>
         </form>,
       ];
     });
@@ -96,13 +112,13 @@ function NavBar(props) {
             <ListItem button>
               <ListItemText primary="General" />
             </ListItem>
-            {rooms.map((room) => (
-              <ListItem button key={room}>
+            {rooms.map((room, index) => (
+              <ListItem button key={index}>
                 <ListItemText>{room}</ListItemText>
               </ListItem>
             ))}
-            {roomName.map((room) => (
-              <ListItem button key={room}>
+            {roomName.map((room, index) => (
+              <ListItem button key={index}>
                 <ListItemText>{room}</ListItemText>
               </ListItem>
             ))}
