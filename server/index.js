@@ -35,6 +35,11 @@ io.on("connection", (socket) => {
       }
     });
 
+  //Testing code to create new room
+  socket.on("create", (room) => {
+    socket.join(room);
+  });
+
   //add new users
   socket.on("newUsr", (newUser) => {
     socket.broadcast.emit("connUser", newUser);

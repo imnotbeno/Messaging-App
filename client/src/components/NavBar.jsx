@@ -57,15 +57,22 @@ function NavBar(props) {
 
   function confirmName(event) {
     event.preventDefault();
-    setRooms((prevRooms) => {
-      return [...prevRooms, name];
-    });
+    if (name.length > 0) {
+      setRooms((prevRooms) => {
+        return [...prevRooms, name];
+      });
+    }
     setRoomName([]);
   }
 
   function nameRoom(event) {
     var value = event.target.value;
     setName(value);
+  }
+
+  function handleRoom(event) {
+    console.log(event.target.name);
+    console.log("You're in the General Room");
   }
 
   function createNewRoom() {
@@ -120,6 +127,9 @@ function NavBar(props) {
           <List>
             <ListItem button>
               <ListItemText primary="General" />
+            </ListItem>
+            <ListItem button onClick={handleRoom}>
+              <ListItemText primary="Test Room" />
             </ListItem>
             {rooms.map((room, index) => (
               <ListItem button key={index}>
