@@ -57,6 +57,7 @@ function NavBar(props) {
 
   function confirmName(event) {
     event.preventDefault();
+    console.log(name.length); // 0 tle je težava
     if (name.length > 0) {
       setRooms((prevRooms) => {
         return [...prevRooms, name];
