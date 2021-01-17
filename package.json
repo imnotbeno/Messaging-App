@@ -25,5 +25,8 @@
   "homepage": "https://github.com/imnotbeno/Messaging-App#readme",
   "devDependencies": {
     "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^5.2.0"
   }
 }

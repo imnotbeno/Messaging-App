@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core";
 import { React, useState, useEffect } from "react";
 import io from "socket.io-client";
 import Login from "./Login";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const socket = io();
 
@@ -20,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App(props) {
-
   const classes = useStyles();
   const [chat, setChat] = useState([]);
   const [userList, setUserList] = useState([]);
@@ -28,8 +28,7 @@ function App(props) {
 
   //ComponentDidMount equivalent
   useEffect(() => {
-
-    //Get message history from server on 
+    //Get message history from server on
     //connection (last 10 messages only)
     socket.on("init", (msg) => {
       var msgReverse = msg.reverse();
@@ -49,9 +48,8 @@ function App(props) {
     socket.on("connUser", (user) => {
       setUserList((prevUsers) => {
         return [...prevUsers, user];
-      })
+      });
     });
-
   }, []);
 
   //Handle new username from Login.js
@@ -60,14 +58,13 @@ function App(props) {
       socket.emit("newUsr", newUser);
       setUser(newUser);
       setUserList((prevUsers) => {
-        return  [newUser];
+        return [newUser];
       });
     }
   }
 
   //Handle new message from Bottom.jsx
   function messageHandler(inputText) {
-
     //Send a new message to the server
     socket.emit("newMessage", {
       user: inputText.user,
@@ -83,16 +80,22 @@ function App(props) {
   return (
     <div>
       {user ? (
-        <div>
-          <div className={classes.root}>
-            <TitleBar />
-            <NavBar users={userList} />
-            <MsgWindow id="chatWindow" chat={chat} username={user} />
+        <Router>
+          <div>
+            <div className={classes.root}>
+              <TitleBar />
+              <NavBar users={userList} />
+              <Switch>
+              <Route path="/" exact >
+              <MsgWindow id="chatWindow" chat={chat} username={user} />
+              </Route>
+              </Switch>
+            </div>
+            <div className={classes.bottomBox}>
+              <Bottom addMessage={messageHandler} username={user} />
+            </div>
           </div>
-          <div className={classes.bottomBox}>
-            <Bottom addMessage={messageHandler} username={user}/>
-          </div>
-        </div>
+        </Router>
       ) : (
         <div>
           <Login addNewUser={addUser} />

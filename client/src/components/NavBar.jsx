@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -130,7 +131,9 @@ function NavBar(props) {
               <ListItemText primary="General" />
             </ListItem>
             <ListItem button onClick={handleRoom}>
-              <ListItemText primary="Test Room" />
+              <Link to="/testroom">
+                <ListItemText primary="Test Room" />
+              </Link>
             </ListItem>
             {rooms.map((room, index) => (
               <ListItem button key={index}>
