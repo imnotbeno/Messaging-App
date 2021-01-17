@@ -128,7 +128,9 @@ function NavBar(props) {
         <div className={classes.drawerContainer}>
           <List>
             <ListItem button>
-              <ListItemText primary="General" />
+              <Link to="/">
+                <ListItemText primary="General" />
+              </Link>
             </ListItem>
             <ListItem button onClick={handleRoom}>
               <Link to="/testroom">

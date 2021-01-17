@@ -86,9 +86,12 @@ function App(props) {
               <TitleBar />
               <NavBar users={userList} />
               <Switch>
-              <Route path="/" exact >
-              <MsgWindow id="chatWindow" chat={chat} username={user} />
-              </Route>
+                <Route path="/" exact>
+                  <MsgWindow id="chatWindow" chat={chat} username={user} />
+                </Route>
+                <Route path="/testroom">
+                  <MsgWindow id="testChatWindow" chat={chat} username={user} />
+                </Route>
               </Switch>
             </div>
             <div className={classes.bottomBox}>
